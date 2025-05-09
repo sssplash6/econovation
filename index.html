@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Econovation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Wide+Latin&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        
+        :root {
+            --primary-bg: rgb(151, 204, 231);
+            --text-color: #ffffff;
+        }
+        
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .title-font {
+            font-family: 'Wide Latin', serif;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+        
+        .term-font {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+        
+        .euro-e {
+            font-family: Arial, sans-serif;
+            display: inline-block;
+            transform: scaleX(0.9);
+        }
+        
+        .nav-container {
+            backdrop-filter: blur(10px);
+            background-color: rgba(151, 204, 231, 0.85);
+        }
+        
+        .nav-link {
+            position: relative;
+            color: var(--text-color);
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--text-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .join-btn {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            background-color: var(--text-color);
+            color: rgb(0, 0, 0);
+        }
+        
+        .join-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Animation styles */
+        .animation-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            background-color: white;
+        }
+        
+        .shape {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-color);
+            background-color: var(--primary-bg);
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .circle {
+            border-radius: 50%;
+            width: 400px;
+            height: 400px;
+            font-size: 5rem;
+        }
+        
+        .rounded-square {
+            border-radius: 25px;
+            width: 500px;
+            height: 400px;
+            font-size: 5rem;
+        }
+        
+        .full-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            opacity: 1;
+            background-color: var(--primary-bg);
+        }
+        
+        .title-container {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease 0.5s;
+        }
+        
+        .title-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .shape-text {
+            transition: opacity 0.1s ease;
+        }
+        
+        .logo-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .split-title {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+        
+        .title-top {
+            margin-bottom: 0;
+            font-size: 8rem;
+        }
+        
+        .title-bottom {
+            margin-top: -1rem;
+            font-size: 8rem;
+        }
+        
+        @media (min-width: 768px) {
+            .title-top {
+                font-size: 12rem;
+            }
+            
+            .title-bottom {
+                font-size: 12rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .title-top {
+                font-size: 15rem;
+            }
+            
+            .title-bottom {
+                font-size: 15rem;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Animation Container -->
+    <div class="animation-container" id="animationContainer">
+        <div class="shape circle" id="mainShape">
+            <div class="shape-text term-font" id="shapeText"></div>
+        </div>
+    </div>
+
+    <div class="hero-section">
+        <div class="nav-container py-4 px-6 w-full">
+            <div class="max-w-6xl mx-auto flex justify-between items-center">
+                <div class="flex space-x-1 items-center">
+                    <img src="EV_logo_version2-removebg-preview.png" alt="Logo" class="logo-img" href = "index.html">
+                </div>
+                <div class="hidden md:flex space-x-12 items-center">
+                    <a href="#" class="nav-link font-medium text-sm">Alpha</a>
+                    <a href="#" class="nav-link font-medium text-sm">Beta</a>
+                    <a href="#" class="nav-link font-medium text-sm">Gamma</a>
+                    <a href="#" class="nav-link font-medium text-sm">Delta</a>
+                    <a href="#" class="join-btn px-4 py-2 rounded-full text-sm font-semibold ml-8">Join Now</a>
+                </div>
+                <button class="md:hidden">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="flex-grow flex items-center justify-center px-4">
+            <div class="text-center title-container" id="titleContainer">
+                <h1 class="title-font">
+                    <div class="split-title">
+                        <span class="title-top">ECONO</span>
+                        <span class="title-bottom">VATION</span>
+                    </div>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const animationContainer = document.getElementById('animationContainer');
+            const mainShape = document.getElementById('mainShape');
+            const shapeText = document.getElementById('shapeText');
+            const titleContainer = document.getElementById('titleContainer');
+            
+            // Full list of terms including abbreviations
+            const allTerms = [
+                'price', 'cost', 'goods', 'needs', 'wants', 'wealth', 'poor', 'rich', 'scarce', 'trade',
+                'plan', 'spend', 'save', 'grow', 'fall', 'boom', 'bust', 'squeeze', 'curb', 'cap',
+                'firm', 'shop', 'buy', 'sell', 'rent', 'wage', 'pay', 'fee', 'bid', 'ask',
+                'deal', 'swap', 'cart', 'mark', 'brand', 'risk', 'loss', 'gain', 'rate', 'tax',
+                'debt', 'cash', 'fund', 'drop', 'peak', 'slump', 'shock', 'curve', 'base', 'flow',
+                'gap', 'drag', 'lag', 'bank', 'trend', 'zone', 'bond', 'stock', 'share', 'loan',
+                'yield', 'vault', 'coin', 'note', 'bucks', 'gold', 'hedge', 'chip', 'swipe', 'port',
+                'ship', 'tariff', 'dump', 'pact', 'grant', 'aid', 'ban', 'quota', 'block', 'link',
+                'bulk', 'fair', 'lead',
+                // Abbreviations
+                'GDP', 'GNP', 'CPI', 'RPI', 'PED', 'YED', 'XED', 'SR', 'LR', 'AD',
+                'AS', 'PPC', 'MPC', 'MPS', 'MPM', 'MPW', 'MR', 'MC', 'AR', 'AC',
+                'TR', 'TC', 'FC', 'VC', 'VAT', 'FT', 'FDI', 'OMO',  'PPP'
+            ];
+            
+            // Function to get 5 random unique terms
+            function getRandomTerms() {
+                const shuffled = [...allTerms].sort(() => 0.5 - Math.random());
+                return shuffled.slice(0, 5);
+            }
+            
+            const terms = getRandomTerms();
+            let currentTermIndex = 0;
+            
+            // Start animation sequence
+            setTimeout(() => {
+                mainShape.style.opacity = '1';
+                
+                const cycleTerms = () => {
+                    if (currentTermIndex < terms.length - 1) {
+                        // Fade out current text (faster)
+                        shapeText.style.opacity = '0';
+                        
+                        setTimeout(() => {
+                            // Change text and fade in (faster)
+                            shapeText.textContent = terms[currentTermIndex];
+                            shapeText.style.opacity = '1';
+                            currentTermIndex++;
+                            
+                            // Continue cycling until last term with shorter delay
+                            if (currentTermIndex < terms.length) {
+                                setTimeout(cycleTerms, 300);
+                            }
+                        }, 50); // Faster transition
+                    } else {
+                        // For the last term, transform to rounded square
+                        setTimeout(() => {
+                            shapeText.style.opacity = '0';
+                            
+                            setTimeout(() => {
+                                shapeText.textContent = terms[currentTermIndex];
+                                shapeText.style.opacity = '1';
+                                mainShape.classList.remove('circle');
+                                mainShape.classList.add('rounded-square');
+                                
+                                // Then expand to full screen (faster)
+                                setTimeout(() => {
+                                    animationContainer.style.backgroundColor = 'var(--primary-bg)';
+                                    mainShape.classList.add('full-screen');
+                                    titleContainer.classList.add('title-visible');
+                                    
+                                    // Faster disappearance of animation container
+                                    setTimeout(() => {
+                                        animationContainer.style.opacity = '0';
+                                        setTimeout(() => {
+                                            animationContainer.style.display = 'none';
+                                        }, 100);
+                                    }, 300); // Shorter delay before disappearing
+                                }, 300); // Shorter delay before expanding
+                            }, 50); 
+                        }, 300); 
+                    }
+                };
+                
+                // Start cycling through terms with shorter initial delay
+                setTimeout(cycleTerms, 300);
+            }, 200); // Shorter initial delay
+            
+            const mobileMenuButton = document.querySelector('button.md\\:hidden');
+            // Mobile menu functionality would go here
+        });
+    </script>
+</html>
