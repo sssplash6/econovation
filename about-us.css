@@ -119,6 +119,7 @@ body {
     animation: fadeInUp 0.6s ease forwards;
 }
 
+/* Department section styling */
 .team-card:nth-child(1) { animation-delay: 0.1s; }
 .team-card:nth-child(2) { animation-delay: 0.2s; }
 .team-card:nth-child(3) { animation-delay: 0.3s; }
@@ -127,15 +128,138 @@ body {
 .team-card:nth-child(6) { animation-delay: 0.6s; }
 .team-card:nth-child(7) { animation-delay: 0.7s; }
 .team-card:nth-child(8) { animation-delay: 0.8s; }
+.team-card:nth-child(9) { animation-delay: 0.9s; }
 
-/* Value items animation */
-.value-item {
-    opacity: 0;
-    animation: fadeInUp 0.6s ease forwards;
-    animation-delay: 1s;
+/* Department section styling */
+.department-section {
+    padding: 3rem 0;
+    border-radius: 1rem;
+    margin-bottom: 3rem;
 }
 
-.value-item:nth-child(2) { animation-delay: 1.1s; }
-.value-item:nth-child(3) { animation-delay: 1.2s; }
-.value-item:nth-child(4) { animation-delay: 1.3s; }
-.value-item:nth-child(5) { animation-delay: 1.4s; }
+/* Department tabs styling */
+.department-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    background: linear-gradient(to right, #f0f4ff, #e6eeff);
+}
+
+.department-tab {
+    padding: 1rem 2rem;
+    font-weight: 600;
+    color: #6b7280;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    flex: 1;
+    text-align: center;
+    border-bottom: 3px solid transparent;
+}
+
+.department-tab.active {
+    color: #3b82f6;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-bottom: 3px solid #3b82f6;
+}
+
+.department-tab:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.department-section {
+    display: none;
+    animation: fadeIn 0.5s ease forwards;
+    margin-bottom: 3rem;
+}
+
+.department-section.active {
+    display: block;
+}
+
+/* Department section styling */
+.founders-section {
+    background: linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(79, 70, 229, 0.05));
+    border-left: 4px solid #3b82f6;
+}
+
+.leaders-section {
+    background: linear-gradient(to right, rgba(245, 158, 11, 0.05), rgba(249, 115, 22, 0.05));
+    border-left: 4px solid #f59e0b;
+}
+
+.smm-section {
+    background: linear-gradient(to right, rgba(139, 92, 246, 0.05), rgba(79, 70, 229, 0.05));
+    border-left: 4px solid #8b5cf6;
+}
+
+.department-heading {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.department-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    border-radius: 2px;
+}
+
+.founders-heading::after {
+    background: linear-gradient(to right, #3b82f6, #4f46e5);
+}
+
+.leaders-heading::after {
+    background: linear-gradient(to right, #f59e0b, #f97316);
+}
+
+.smm-heading::after {
+    background: linear-gradient(to right, #8b5cf6, #4f46e5);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Enhanced navbar styling */
+#mainNav {
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    margin-top: 1rem;
+    width: 95%;
+    left: 2.5%;
+    right: 2.5%;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+#mainNav.scrolled {
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Team card animation delays */
+.team-card:nth-child(1) { animation-delay: 0.1s; }
+.team-card:nth-child(2) { animation-delay: 0.2s; }
+.team-card:nth-child(3) { animation-delay: 0.3s; }
+.team-card:nth-child(4) { animation-delay: 0.4s; }
+.team-card:nth-child(5) { animation-delay: 0.5s; }
+.team-card:nth-child(6) { animation-delay: 0.6s; }
+.team-card:nth-child(7) { animation-delay: 0.7s; }
+.team-card:nth-child(8) { animation-delay: 0.8s; }
+.team-card:nth-child(9) { animation-delay: 0.9s; }
